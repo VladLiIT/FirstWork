@@ -21,16 +21,13 @@ from coolsite import settings
 from women.views import *
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    # path('', index),  #  http://127.0.0.1:8000/women/
-    # path('cats/', categories),  #  http://127.0.0.1:8000/cats/
-    # path('girl/', girls) 
-    # Эти длинные записи позволяет сократить функция "include"
     path('admin/', admin.site.urls),
     path('', include('women.urls')),
 ]
 
-
+# Для отображение фото на сайте
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = pageNotFound 
 
